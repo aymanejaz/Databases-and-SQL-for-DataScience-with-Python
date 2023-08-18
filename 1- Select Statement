@@ -1,0 +1,50 @@
+-- Basics Syntax SQL
+
+-- Some of The Most Important SQL Commands
+-- SELECT - extracts data from a database
+-- UPDATE - updates data in a database
+-- DELETE - deletes data from a database
+-- INSERT INTO - inserts new data into a database
+-- CREATE DATABASE - creates a new database
+-- ALTER DATABASE - modifies a database
+-- CREATE TABLE - creates a new table
+-- ALTER TABLE - modifies a table
+-- DROP TABLE - deletes a table
+-- CREATE INDEX - creates an index (search key)
+-- DROP INDEX - deletes an index
+
+-- SQL keywords are NOT case sensitive: select is the same as SELECT
+
+-- Examples
+-- FilmLocations is a dataset - https://datasette.io/
+-- This line is a SQL query that retrieves all the columns (attributes) and all the rows (records) from the "FilmLocations" table. In SQL, the asterisk (*) is used as a wildcard character to represent all columns, so this query is asking the database to return all the data stored in the "FilmLocations" table.
+SELECT * FROM FilmLocations;
+
+-- This line is also a SQL query, but it specifies which columns to retrieve from the "FilmLocations" table. Specifically, it asks the database to return the "Title," "Director," and "Writer" columns for all the records in the table. The result would be a list of movie titles, directors, and writers from the "FilmLocations" table.
+SELECT Title, Director, Writer FROM FilmLocations;
+
+-- This line is another SQL query that is more specific in its retrieval. It requests the "Title," "ReleaseYear," and "Locations" columns from the "FilmLocations" table, but only for those records where the "ReleaseYear" is greater than or equal to 2001. This query is filtering the data to return information about movies released in 2001 or later, including their titles, release years, and filming locations.
+SELECT Title, ReleaseYear, Locations FROM FilmLocations WHERE ReleaseYear>=2001;
+
+-- Problem:
+-- Retrieve the fun facts and filming locations of all films.
+
+SELECT Locations, FunFacts FROM FilmLocations;
+
+-- Problem:
+-- Retrieve the names of all films released in the 20th century and before (release years before 2000 including 2000) that, along with filming locations and release years.
+
+SELECT Title, ReleaseYear, Locations FROM FilmLocations WHERE ReleaseYear <= 2000;
+
+-- Problem:
+
+-- Retrieve the names, production company names, filming locations, and release years of the films which are not written by James Cameron.
+
+SELECT Title, ProductionCompany, Locations, ReleaseYear FROM FilmLocations WHERE Writer<>"James Cameron";
+
+
+-- Problem:
+-- Retrieve the names, production company names, filming locations, and release years of the films which are not Directed by Jayendra
+
+SELECT Title, ProductionCompany, Locations, ReleaseYear FROM FilmLocations WHERE Director <> "Jayendra";
+
