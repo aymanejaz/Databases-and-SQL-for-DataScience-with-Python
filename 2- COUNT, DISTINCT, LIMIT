@@ -1,0 +1,110 @@
+---------------------------- Exercise 1: COUNT ---------------------------- 
+
+SELECT * FROM FilmLocations;
+
+-- In this example, suppose we want to count the number of records or rows of the “FilmLocations” table.
+
+-- Problem:
+-- Retrieve the number of rows from the “FilmLocations” table.
+-- Solution:
+SELECT COUNT(*) FROM FilmLocations;
+
+
+-- Problem:
+-- Retrieve the number of locations of the films which are written by James Cameron.
+-- Solution:
+SELECT COUNT(Locations) FROM FilmLocations WHERE Writer="James Cameron";
+
+
+-- Problem:
+-- Retrieve the number of locations of the films which are directed by Woody Allen.
+-- Hint
+-- Follow example 2 of the COUNT exercise. Use the WHERE clause comparison operator = which means “Equal to”.
+
+-- Solution
+SELECT COUNT(Locations) FROM FilmLocations WHERE Director="Woody Allen";
+
+
+-- Problem:
+-- Retrieve the number of films shot at Russian Hill.
+-- Solution
+SELECT Count(Title) FROM FilmLocations WHERE Locations="Russian Hill";
+
+
+-- Problem:
+-- Retrieve the number of rows having a release year older than 1950 from the “FilmLocations” table.
+-- Solution
+SELECT Count(*) FROM FilmLocations WHERE ReleaseYear<1950;
+
+
+---------------------------- Exercise 2: DISTINCT ---------------------------- 
+
+-- In this example, we want to retrieve the title of all films in the table in such a way that duplicates will be discarded in the output resultset.
+
+-- Problem:
+-- Retrieve the name of all films without any repeated titles.
+-- Solution:
+SELECT DISTINCT Title FROM FilmLocations;
+
+-- Problem:
+-- Retrieve the number of release years of the films distinctly, produced by Warner Bros. Pictures.
+-- Solution:
+SELECT COUNT(DISTINCT ReleaseYear) FROM FilmLocations WHERE ProductionCompany="Warner Bros. Pictures";
+
+
+-- Problem:
+-- Retrieve the name of all unique films released in the 21st century and onwards, along with their release years.
+SELECT DISTINCT Title, ReleaseYear FROM FilmLocations WHERE ReleaseYear>=2001;
+
+-- Problem:
+-- Retrieve the names of all the directors and their distinct films shot at City Hall.
+SELECT DISTINCT Title, Director FROM FilmLocations WHERE Locations="City Hall";
+
+-- Problem:
+-- Retrieve the number of distributors distinctly who distributed films acted by Clint Eastwood as 1st actor.
+
+-- Solution
+SELECT COUNT(DISTINCT Distributor) FROM FilmLocations WHERE Actor1="Clint Eastwood";
+
+
+---------------------------- Exercise 3: LIMIT ---------------------------- 
+
+-- In this example, let us retrieve a specific number of rows from the top of the table in such a way that rows other than those are not in the output resultset.
+
+-- Problem:
+-- Retrieve the first 25 rows from the “FilmLocations” table.
+-- Solution:
+SELECT * FROM FilmLocations LIMIT 25;
+
+
+-- In this example, let us take the first example to a more advanced level. Now we want to retrieve a specific number of rows from the table, but thid time, not from the top of the table. This time we want to retrieve a specific number of rows starting from a specific row in the table.
+
+-- Problem:
+-- Retrieve the first 15 rows from the “FilmLocations” table starting from row 11.
+
+-- Solution:
+SELECT * FROM FilmLocations LIMIT 15 OFFSET 10;
+
+
+-- Problem:
+-- Retrieve the name of first 50 films distinctly.
+
+SELECT DISTINCT Title FROM FilmLocations LIMIT 50;
+
+-- Problem:
+-- Retrieve first 10 film names distinctly released in 2015.
+SELECT DISTINCT Title FROM FilmLocations WHERE ReleaseYear=2015 LIMIT 10;
+
+
+-- Problem:
+
+-- Retrieve the next 3 film names distinctly after first 5 films released in 2015.
+SELECT DISTINCT Title FROM FilmLocations WHERE ReleaseYear=2015 LIMIT 3 OFFSET 5;
+
+
+
+
+
+
+
+
