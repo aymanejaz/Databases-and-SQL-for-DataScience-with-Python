@@ -68,4 +68,11 @@ select DATE_add(RESCUEDATE, INTERVAL 3 DAY) from PETRESCUE;
 
 
 -- Query C5: Enter a function that displays the length of time the animals have been rescued; the difference between today’s date and the rescue date.
-select DATEDIFF(CURRENT_TIMESTAMP,RESCUEDATE) from PETRESCUE;
+select DATEDIFF(CURRENT_TIMESTAMP,RESCUEDATE) from PETRESCUE; --Not getting clear output
+
+-- Another solution
+SELECT (CURRENT_DATE - RESCUEDATE) from PETRESCUE;
+-- output: format(YearMonthDate) YMMDD
+-- 50293
+-- 50221
+-- 50218
